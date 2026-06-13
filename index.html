@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ladla UC Shop</title>
+    <style>
+        body { background-color: #0b0c10; color: white; font-family: Arial, sans-serif; text-align: center; padding: 10px; margin: 0; }
+        .container { max-width: 500px; margin: 10px auto; background: #1f2833; padding: 20px; border-radius: 15px; box-shadow: 0 4px 25px rgba(255,179,0,0.2); box-sizing: border-box; }
+        
+        /* Shop Banner */
+        .banner-img { width: 100%; height: 150px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; border: 2px solid #ffb300; }
+        
+        .sub { color: #66fcf1; font-size: 13px; margin-bottom: 20px; font-weight: bold; letter-spacing: 2px; }
+        
+        /* Payment Methods */
+        .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .method-card { background: #0b0c10; padding: 12px; border: 2px solid #45f3ff; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .method-card.ep.active { border-color: #00ca4e; background: #032b12; }
+        .method-card.jc.active { border-color: #ff0000; background: #2d0404; }
+        
+        .payment-details { background: #0b0c10; border: 1px dashed #ffb300; padding: 12px; border-radius: 8px; margin-bottom: 20px; text-align: left; display: none; }
+        .payment-details p { margin: 5px 0; font-size: 14px; }
+        
+        /* Input Style */
+        input { width: 100%; padding: 14px; margin: 15px 0; border-radius: 8px; border: 1px solid #45f3ff; background: #0b0c10; color: white; text-align: center; font-size: 16px; box-sizing: border-box; }
+        input:focus { border-color: #ffb300; outline: none; }
+        
+        /* UC Grid with Images */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 15px 0; }
+        .card { background: #0b0c10; padding: 15px; border: 2px solid #333; border-radius: 12px; cursor: pointer; transition: 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .card:hover, .card.active { border-color: #ffb300; background: #2a2210; transform: translateY(-2px); }
+        
+        /* Realistic UC Item Images */
+        .uc-img { width: 70px; height: 70px; object-fit: contain; margin-bottom: 8px; }
+        
+        .uc-amount { font-weight: bold; color: #ffb300; font-size: 18px; }
+        .price { color: #bbb; margin-top: 5px; font-size: 14px; }
+        
+        .order-btn { background: #ffb300; color: black; border: none; width: 100%; padding: 14px; font-weight: bold; font-size: 16px; border-radius: 8px; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 10px rgba(255,179,0,0.3); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Shop Logo Banner -->
+    <img src="https://unsplash.com" alt="Ladla UC Shop Banner" class="banner-img">
+    <div class="sub">LADLA UC SHOP - OFFICIAL TOP UP</div>
+    
+    <p style="text-align:left; font-size:14px; margin-bottom:5px; color:#aaa;">Select Payment Method:</p>
+    <div class="payment-methods">
+        <div class="method-card ep" onclick="selectMethod('EasyPaisa')">EasyPaisa</div>
+        <div class="method-card jc" onclick="selectMethod('JazzCash')">JazzCash</div>
+    </div>
+
+    <div id="ep-details" class="payment-details">
+        <p>🟢 <b>EasyPaisa No:</b> 03121464586</p>
+        <p>⚠️ Pehle payment bhejein, phir neeche order fill karein.</p>
+    </div>
+    <div id="jc-details" class="payment-details">
+        <p>🔴 <b>JazzCash No:</b> 03299170051</p>
+        <p>⚠️ Pehle payment bhejein, phir neeche order fill karein.</p>
+    </div>
+
+    <!-- Direct Player ID Input (No Verification Needed) -->
+    <input type="number" id="playerId" placeholder="Enter PUBG Player ID Here">
+
+    <!-- Grid With Real-Looking UC Graphics -->
+    <div class="grid">
+        <!-- 60 UC -->
+        <div class="card" onclick="selectPack(this, 60, 290)">
+            <img src="https://unsplash.com" alt="60 UC" class="uc-img">
+            <div class="uc-amount">60 UC</div>
+            <div class="price">Rs. 290</div>
+        </div>
+        <!-- 325 UC -->
+        <div class="card" onclick="selectPack(this, 325, 1450)">
+            <img src="https://unsplash.com" alt="325 UC" class="uc-img">
+            <div class="uc-amount">325 UC</div>
+            <div class="price">Rs. 1,450</div>
+        </div>
+        <!-- 660 UC -->
+        <div class="card" onclick="selectPack(this, 660, 2899)">
+            <img src="https://unsplash.com" alt="660 UC" class="uc-img">
+            <div class="uc-amount">660 UC</div>
+            <div class="price">Rs. 2,899</div>
+        </div>
+        <!-- 1800 UC -->
+        <div class="card" onclick="selectPack(this, 1800, 6990)">
+            <img src="https://unsplash.com" alt="1800 UC" class="uc-img">
+            <div class="uc-amount">1800 UC</div>
+            <div class="price">Rs. 6,990</div>
+        </div>
+    </div>
+
+    <button class="order-btn" onclick="sendOrder()">Buy Via WhatsApp</button>
+</div>
+
+<script>
+    let selectedUC = 0;
+    let selectedPrice = 0;
+    let selectedPayment = "";
+
+    function selectMethod(method) {
+        document.querySelectorAll('.method-card').forEach(m => m.classList.remove('active'));
+        document.querySelectorAll('.payment-details').forEach(d => d.style.display = 'none');
+        selectedPayment = method;
+        if(method === 'EasyPaisa') {
+            document.querySelector('.method-card.ep').classList.add('active');
+            document.getElementById('ep-details').style.display = 'block';
+        } else {
+            document.querySelector('.method-card.jc').classList.add('active');
+            document.getElementById('jc-details').style.display = 'block';
+        }
+    }
+
+    function selectPack(element, uc, price) {
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+        element.classList.add('active');
+        selectedUC = uc;
+        selectedPrice = price;
+    }
+
+    function sendOrder() {
+        let id = document.getElementById('playerId').value;
+        if(!selectedPayment) { alert('Pehle EasyPaisa ya JazzCash select karein!'); return; }
+        if(!id) { alert('Pehle Player ID likhein!'); return; }
+        if(selectedUC === 0) { alert('Pehle UC Pack select karein!'); return; }
+        
+        let whatsappNum = "923121464586"; 
+        let message = `Salam! Mujhe Ladla UC Shop se UC chahiye.%0A🆔 *Player ID:* ${id}%0A📦 *Pack:* ${selectedUC} UC%0A💰 *Price:* Rs. ${selectedPrice}%0A💳 *Payment Method:* ${selectedPayment}`;
+        
+        window.open(`https://wa.me{whatsappNum}?text=${message}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
