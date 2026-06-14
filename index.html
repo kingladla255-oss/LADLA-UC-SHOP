@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کامیاب ڈیجیٹل ہنر پورٹل - گھر بیٹھے آن لائن کمائیں</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Arabic', sans-serif; }
+        body { background: #f8fafc; color: #1e293b; min-height: 100vh; }
+        .navbar { background: #ffffff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { font-size: 22px; font-weight: bold; color: #0f172a; }
+        .logo span { color: #2563eb; }
+        .hero { background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: white; padding: 100px 20px; text-align: center; }
+        .hero h1 { font-size: 42px; margin-bottom: 20px; font-weight: 700; color: #f8fafc; }
+        .hero p { font-size: 20px; max-width: 700px; margin: 0 auto 30px auto; opacity: 0.9; line-height: 1.8; }
+        .info-bar { background: #eff6ff; padding: 20px; text-align: center; border-bottom: 2px dashed #bfdbfe; font-size: 16px; font-weight: 500; color: #1e40af; }
+        .main-section { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 28px; color: #0f172a; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: white; padding: 35px 25px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); text-align: center; transition: all 0.3s ease; border: 1px solid #e2e8f0; position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: #e2e8f0; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .card:hover::before { background: #2563eb; }
+        .card .icon { font-size: 45px; background: #f1f5f9; width: 80px; height: 80px; line-height: 80px; border-radius: 50%; margin: 0 auto 20px auto; }
+        .card h3 { color: #0f172a; margin-bottom: 15px; font-size: 22px; font-weight: 700; }
+        .card p { color: #64748b; font-size: 15px; line-height: 1.8; margin-bottom: 25px; height: 110px; }
+        .card .btn { display: block; padding: 12px; background-color: #f1f5f9; color: #1e293b; text-decoration: none; border-radius: 8px; font-weight: 600; transition: 0.3s; font-size: 15px; }
+        .card:hover .btn { background-color: #2563eb; color: white; }
+        .footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 30px; margin-top: 80px; font-size: 14px; border-top: 4px solid #2563eb; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">ڈیجیٹل <span>ہنر</span></div>
+    </div>
+
+    <div class="hero">
+        <h1>گھر بیٹھے آن لائن آمدنی کا آغاز کریں</h1>
+        <p>انٹرنیٹ پر وقت ضائع کرنے کے بجائے حقیقی اور قیمتی ڈیجیٹل مہارتیں سیکھیں۔ دنیا بھر کے کلائنٹس کے ساتھ کام کریں اور اپنے محفوظ مستقبل کا آغاز کریں۔</p>
+    </div>
+
+    <div class="info-bar">
+        💡 نوٹ: شارٹ کٹ، اشتہارات دیکھنے یا پیسے ڈوبنے والے دھوکوں سے بچیں، صرف محنت اور ہنر ہی مستقل کامیابی کی ضمانت ہے۔
+    </div>
+
+    <div class="main-section">
+        <h2 class="section-title">پاکستان کے بہترین فری کورسز</h2>
+        
+        <div class="grid">
+            <!-- فری لانسنگ کورس -->
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>فری لانسنگ (Freelancing)</h3>
+                <p>ہشام سرور صاحب سے سیکھیں کہ کس طرح Fiverr اور Upwork پر پروفائل بنا کر بین الاقوامی گاہکوں سے آرڈرز حاصل کیے جاتے ہیں۔</p>
+                <a href="https://www.youtube.com/playlist?list=PLHi_NUJDIGWIU1-pPxaiVLNFwtX2Z2wwJ" target="_blank" class="btn">یوٹیوب کورس دیکھیں</a>
+            </div>
+
+            <!-- گرافک ڈیزائننگ کورس -->
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>گرافک ڈیزائننگ</h3>
+                <p>جی ایف ایکس مینٹور (Imran Ali Dina) سے فوٹوشاپ اور السٹریٹر بالکل شروع سے مفت سیکھیں اور پروفیشنل ڈیزائنر بنیں۔</p>
+                <a href="https://www.youtube.com/c/GFXMentor/playlists" target="_blank" class="btn">یوٹیوب کورس دیکھیں</a>
+            </div>
+
+            <!-- ڈیجیٹل مارکیٹنگ کورس -->
+            <div class="card">
+                <div class="icon">📢</div>
+                <h3>ڈیجیٹل مارکیٹنگ</h3>
+                <p>سوشل میڈیا اور گوگل پر اشتہارات چلا کر برانڈز کی سیلز بڑھانے کا مکمل طریقہ کار آسان اردو زبان میں سیکھیں۔</p>
+                <a href="https://www.youtube.com/c/HishamSarwar/playlists" target="_blank" class="btn">یوٹیوب کورس دیکھیں</a>
+            </div>
+
+            <!-- ویب ڈویلپمنٹ کورس -->
+            <div class="card">
+                <div class="icon">🚀</div>
+                <h3>ویب سائٹ ڈیزائن</h3>
+                <p>آزاد چائے والا کے چینل سے بغیر کوڈنگ کے ورڈپریس (WordPress) پر پروفیشنل ویب سائٹس اور آن لائن اسٹورز بنانا سیکھیں۔</p>
+                <a href="https://youtube.com" target="_blank" class="btn">یوٹیوب کورس دیکھیں</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 ڈیجیٹل ہنر پورٹل۔ تمام حقوق محفوظ ہیں۔ حقیقی علم، سچی کامیابی۔</p>
+    </div>
+
+</body>
+</html>
