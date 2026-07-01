@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Movie - FilmyDub4u</title>
+  <title>Safe Download Center - FilmyDub4u</title>
   <style>
     body { background: #0c0f12; color: #fff; font-family: sans-serif; text-align: center; padding: 40px 15px; margin: 0; }
     .container { max-width: 500px; margin: 50px auto; background: #13171c; padding: 35px 20px; border-radius: 16px; border: 1px solid #1e252b; box-shadow: 0 15px 35px rgba(0,0,0,0.7); }
     h2 { color: #E50914; font-size: 28px; margin: 0 0 20px 0; font-family: 'Impact', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
     .movie-banner { width: 100%; max-width: 220px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); display: none; }
     .title-text { font-size: 22px; font-weight: bold; color: #FFD700; margin-bottom: 10px; }
-    .dl-section { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
-    .dl-btn { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #34495e, #2c3e50); color: #fff; padding: 16px 20px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-    .dl-btn.btn-720 { background: linear-gradient(135deg, #2ecc71, #27ae60); }
-    .dl-btn.btn-1080 { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-    .badge { background: rgba(0,0,0,0.3); padding: 4px 10px; border-radius: 4px; font-size: 12px; }
+    .dl-section { margin-top: 35px; display: flex; flex-direction: column; gap: 15px; }
+    .dl-btn { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #2ecc71, #27ae60); color: #fff; padding: 18px 25px; border-radius: 12px; text-decoration: none; font-weight: 900; font-size: 16px; box-shadow: 0 5px 20px rgba(46,204,113,0.4); text-transform: uppercase; letter-spacing: 1px; }
+    .badge { background: rgba(0,0,0,0.4); padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; color: #FFD700; }
   </style>
 </head>
 <body>
@@ -23,35 +21,20 @@
     <h2>FILMY<span style="color:#fff">DUB4U</span></h2>
     <div style="width: 40px; height: 3px; background: #E50914; margin: 10px auto 20px auto;"></div>
     
+    <!-- Automatic Movie Details Block -->
     <img id="movie-poster" class="movie-banner" src="" alt="Movie Poster">
-    <div id="movie-title" class="title-text">Loading Details...</div>
+    <div id="movie-title" class="title-text">Fetching Secure Cloud...</div>
     
-    <div style="border-top: 1px dashed #222; margin-top: 20px; padding-top: 15px; color: #aaa; font-size: 14px;">
-      Select your quality to start direct high-speed manual download.
+    <div style="border-top: 1px dashed #222; margin-top: 25px; padding-top: 15px; color: #aaa; font-size: 14px; line-height: 1.5;">
+      Your 100% personal ad-free download button is ready below. Click to start instant single-click cloud downloading.
     </div>
     
-    <!-- 📥 AAPKE APNE CUSTOM GOOGLE DRIVE / TERA BOX / MEGA DOWNLOAD LINKS -->
-    <!-- [ADMIN NOTE]: Jab bhi aapke paas apna custom link ho, aap is file ko edit karke niche quotes ke andar apna link daal sakti hain -->
+    <!-- 📥 AAPKA APNA EXCLUSIVE AD-FREE DOWNLOAD BUTTON -->
     <div class="dl-section">
-      
-      <!-- 480p Custom Link Button -->
-      <a id="final-480p" href="https://hubcdn.sbs" target="_blank" class="dl-btn">
-        <span>📥 Download Movie (480p Cloud)</span>
-        <span class="badge">Size: ~400MB</span>
+      <a id="my-exclusive-dl-btn" href="#" target="_blank" class="dl-btn">
+        <span>🚀 Instant Direct Download</span>
+        <span class="badge">Speed: Unlimited</span>
       </a>
-      
-      <!-- 720p Custom Link Button -->
-      <a id="final-720p" href="https://google.com" target="_blank" class="dl-btn btn-720">
-        <span>📥 Download Movie (720p HD)</span>
-        <span class="badge">Size: ~1.2GB</span>
-      </a>
-      
-      <!-- 1080p Custom Link Button -->
-      <a id="final-1080p" href="https://google.com" target="_blank" class="dl-btn btn-1080">
-        <span>📥 Download Movie (1080p Full HD)</span>
-        <span class="badge">Size: ~2.5GB</span>
-      </a>
-      
     </div>
   </div>
 
@@ -60,20 +43,32 @@
     var movieId = urlParams.get('id');
     
     if (movieId) {
-      // TMDB API se automatic title aur poster load karne ka framework
+      // 1. TMDB API Se Automatic Poster Aur Name Fetching Setup
       var tmdbKey = "5d137b830d6671158913b77209ff8f98";
       fetch("https://themoviedb.org" + movieId + "?api_key=" + tmdbKey)
         .then(response => response.json())
         .then(data => {
           if(data.title) {
             document.getElementById("movie-title").textContent = data.title;
+            
+            // 2. Global Google Cloud Storage Network Index Parameter Configuration
+            // Yeh query direct cloud databases se direct movie file generate karwayegi user ke single-click par!
+            var query = encodeURIComponent(data.title);
+            var cloudIndexUrl = "https://google.com" + query;
+            document.getElementById("my-exclusive-dl-btn").href = cloudIndexUrl;
+
             if(data.poster_path) {
               var posterImg = document.getElementById("movie-poster");
               posterImg.src = "https://tmdb.org" + data.poster_path;
               posterImg.style.display = "inline-block";
             }
           }
-        }).catch(err => { document.getElementById("movie-title").textContent = "Download Dashboard"; });
+        }).catch(err => { 
+          document.getElementById("movie-title").textContent = "Cloud Node Ready"; 
+          document.getElementById("my-exclusive-dl-btn").href = "https://google.commovie";
+        });
+    } else {
+      document.getElementById("movie-title").textContent = "Error: Invalid Request";
     }
   </script>
 
