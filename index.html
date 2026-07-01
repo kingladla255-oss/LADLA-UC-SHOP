@@ -6,19 +6,21 @@
   <title>Download Movie - FilmyDub4u</title>
   <style>
     body { background: #0c0f12; color: #fff; font-family: sans-serif; text-align: center; padding: 40px 15px; margin: 0; }
-    .container { max-width: 500px; margin: 30px auto; background: #13171c; padding: 35px 20px; border-radius: 16px; border: 1px solid #1e252b; box-shadow: 0 15px 35px rgba(0,0,0,0.7); }
-    h2 { color: #E50914; font-size: 28px; margin: 0 0 20px 0; font-family: 'Impact', sans-serif; letter-spacing: 1px; }
+    .container { max-width: 500px; margin: 60px auto; background: #13171c; padding: 35px 20px; border-radius: 16px; border: 1px solid #1e252b; box-shadow: 0 15px 35px rgba(0,0,0,0.7); }
+    h2 { color: #E50914; font-size: 28px; margin: 0 0 20px 0; font-family: 'Impact', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
     .movie-banner { width: 100%; max-width: 220px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); display: none; }
     .title-text { font-size: 22px; font-weight: bold; color: #FFD700; margin-bottom: 10px; }
     .timer-box { font-size: 16px; color: #aaa; margin: 20px 0; font-weight: bold; }
     .countdown { font-size: 45px; font-weight: 900; color: #FFD700; margin: 15px 0; font-family: monospace; }
-    .dl-btn { display: none; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #2ecc71, #27ae60); color: #fff; padding: 16px 20px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(46,204,113,0.4); text-transform: uppercase; }
+    .dl-btn { display: none; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #2ecc71, #27ae60); color: #fff; padding: 16px 20px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(46,204,113,0.4); text-transform: uppercase; letter-spacing: 1px; }
   </style>
 </head>
 <body>
 
   <div class="container">
     <h2>FILMY<span style="color:#fff">DUB4U</span></h2>
+    <div style="width: 40px; height: 3px; background: #E50914; margin: 10px auto 20px auto;"></div>
+    
     <img id="movie-poster" class="movie-banner" src="" alt="Movie Poster">
     <div id="movie-title" class="title-text">Connecting to Secure Cloud...</div>
     
@@ -53,12 +55,12 @@
           }
         }).catch(err => { document.getElementById("movie-title").textContent = "Download Mirrors Ready"; });
 
-      // Unblocked Ads-Free Download Pipeline API Target URL
+      // Unblocked Pure Direct Download Server Route (Taki Video Play Na Ho)
       var p1 = "https://";
-      var p2 = "multiembed.mov/";
-      var p3 = "?video_id=";
-      var p4 = "&tmdb=1";
-      var targetUrl = p1.concat(p2, p3, movieId, p4);
+      var p2 = "autoembed.to/";
+      var p3 = "download/";
+      var p4 = "movie/";
+      var targetUrl = p1.concat(p2, p3, p4, movieId);
       document.getElementById("final-dl-btn").href = targetUrl;
       
       // 10 Seconds Countdown Timer Module
