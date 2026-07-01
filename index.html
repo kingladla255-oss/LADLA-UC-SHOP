@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Safe Download Center - FilmyDub4u</title>
+  <title>Download Movie - FilmyDub4u</title>
   <style>
     body { background: #0c0f12; color: #fff; font-family: sans-serif; text-align: center; padding: 40px 15px; margin: 0; }
     .container { max-width: 500px; margin: 50px auto; background: #13171c; padding: 35px 20px; border-radius: 16px; border: 1px solid #1e252b; box-shadow: 0 15px 35px rgba(0,0,0,0.7); }
     h2 { color: #E50914; font-size: 28px; margin: 0 0 20px 0; font-family: 'Impact', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
     .movie-banner { width: 100%; max-width: 220px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); display: none; }
     .title-text { font-size: 22px; font-weight: bold; color: #FFD700; margin-bottom: 10px; }
-    .dl-section { margin-top: 35px; display: flex; flex-direction: column; gap: 15px; }
-    .dl-btn { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #2ecc71, #27ae60); color: #fff; padding: 18px 25px; border-radius: 12px; text-decoration: none; font-weight: 900; font-size: 16px; box-shadow: 0 5px 20px rgba(46,204,113,0.4); text-transform: uppercase; letter-spacing: 1px; }
-    .badge { background: rgba(0,0,0,0.4); padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; color: #FFD700; }
+    .dl-section { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
+    .dl-btn { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; padding: 16px 20px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); text-transform: uppercase; }
+    .badge { background: rgba(0,0,0,0.3); padding: 4px 10px; border-radius: 4px; font-size: 12px; }
   </style>
 </head>
 <body>
@@ -22,17 +22,18 @@
     <div style="width: 40px; height: 3px; background: #E50914; margin: 10px auto 20px auto;"></div>
     
     <img id="movie-poster" class="movie-banner" src="" alt="Movie Poster">
-    <div id="movie-title" class="title-text">Cloud Node Ready</div>
+    <div id="movie-title" class="title-text">Download Dashboard</div>
     
-    <div style="border-top: 1px dashed #222; margin-top: 25px; padding-top: 15px; color: #aaa; font-size: 14px; line-height: 1.5;">
-      Your 100% personal ad-free download button is ready below. Click to start instant single-click cloud downloading.
+    <div style="border-top: 1px dashed #222; margin-top: 20px; padding-top: 15px; color: #aaa; font-size: 14px;">
+      Manual Links Mode Active. Links will be available after admin updates the server files.
     </div>
     
-    <!-- 📥 AAPKA APNA EXCLUSIVE AD-FREE DOWNLOAD BUTTON -->
     <div class="dl-section">
-      <a id="my-exclusive-dl-btn" href="https://google.com" target="_blank" class="dl-btn">
-        <span>🚀 Instant Direct Download</span>
-        <span class="badge">SPEED: UNLIMITED</span>
+      <!-- 📥 ASLI DOWNLOAD BUTTONS -->
+      <!-- [ADMIN]: Jab aapke paas original TeraBox ya G-Drive link ho, to niche href="#" ke andar '#' ko mita kar apna link paste kar dena. -->
+      <a id="my-direct-btn" href="#" target="_blank" class="dl-btn">
+        <span>🚀 Link Not Available Yet</span>
+        <span class="badge">Direct Cloud</span>
       </a>
     </div>
   </div>
@@ -48,21 +49,26 @@
         .then(data => {
           if(data.title) {
             document.getElementById("movie-title").textContent = data.title;
-            
-            // Fixed clean URL spacing logic
-            var query = encodeURIComponent(data.title);
-            document.getElementById("my-exclusive-dl-btn").href = "https://google.com" + query;
-
             if(data.poster_path) {
               var posterImg = document.getElementById("movie-poster");
               posterImg.src = "https://tmdb.org" + data.poster_path;
               posterImg.style.display = "inline-block";
             }
           }
-        }).catch(err => {
-          // If API lags, direct fallback to a 100% safe verified link
-          document.getElementById("my-exclusive-dl-btn").href = "https://google.com";
-        });
+        }).catch(err => { });
+        
+      // Agar href mein "#" hoga, to click karne par koi faltu page ya Google nahi khulega.
+      var myButton = document.getElementById("my-direct-btn");
+      
+      // ADMIN TEST: Check karne ke liye ke aapka link sahi jagah khul raha hai ya nahi, 
+      // aap niche wale link ko mita kar apna asli movie downloading file path laga sakti hain.
+      var yourActualMovieLink = "#"; 
+      
+      if(yourActualMovieLink !== "#") {
+        myButton.href = yourActualMovieLink;
+        myButton.querySelector("span").textContent = "🚀 Start Instant Download";
+        myButton.style.background = "linear-gradient(135deg, #2ecc71, #27ae60)";
+      }
     }
   </script>
 
